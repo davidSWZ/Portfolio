@@ -1,0 +1,13 @@
+Trouver le problème avec la sauvegarde des compétences
+Ajouter passport.js
+Régler le problème des liens vers GitHub et Linkedin
+Ajouter un bouton LogOut et enlever le lien vers la page d’accueil sont le logo de mon nom
+rendre le tout responsive
+mettre en forme competence
+mettre en forme curriculum
+mettre en forme portfolio
+faire les forms pour chaque portfolio
+mettre en forme contact
+ajouter un formulaire a contact pour m’envoyer un mail
+partie présentation??
+effet de parallaxe sur une partie??
