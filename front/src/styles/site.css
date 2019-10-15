@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,800,900&display=swap');
+
+body{
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: fixed;
+}
+
+.custom-container{
+  margin:1px;
+}
+
+nav{
+  border-bottom: 0px solid white;
+  font-size: 15px;
+  z-index: 1 !important;
+}
+
+.navbar{
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.NavBarScrolling{
+  background: black;
+  margin-top: 0 !important;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, .5);
+}
+
+.navbar-brand{
+  color: #c63737;;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.prenom{
+  font-weight: 900;
+}
+
+.nom{
+  font-weight: 300;
+}
+
+.navbar-brand:hover{
+  color: #c63737;;
+}
+
+.NavBarBrandScrolling{
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.ancre{
+  color: white;
+}
+
+.admin-btn{
+  border: 1px solid white;
+  border-radius: 50px;
+  font-size: 12px;
+  background: rgba(0,0,0,0);
+}
+
+.admin-btn i{
+  font-size: 15px;
+}
+
+.nav-link{
+  margin-left: 20px;
+}
+
+.nav-link:hover{
+  background-color: #c63737;;
+  color: white !important;
+  border: black;
+  border-radius: 50px;
+  transition: .5s;
+}
+
+.active{
+  background-color: #c63737;
+  border-radius: 20px;
+  transition: .5s;
+}
+
+.section {
+  width: 100%;
+  position:relative;
+}
+
+.section-title{
+  font-size: 50px;
+  font-weight: 300;
+}
+
+#home, #competence, #cv, #portfolio, #contact{
+  padding-top: 70px;
+}
+
+#home{
+  padding-top: 70px;
+  background-image: url("./images/front-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: white;
+}
+
+#contact{
+margin-bottom: 600px;
+}
+
+.home-background{
+    filter: blur(3px);
+}
+
+.animation-home, .animation-logo{
+  animation-name: 'change-title';
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+}
+
+.animation-logo{
+  animation-fill-mode: backwards;
+  animation-delay: 5s;
+}
+
+@keyframes change-title {
+  0%{
+    transform: translateY(-50px);
+    opacity: 0;
+    display: none;
+    transition-timing-function: cubic-bezier(0, 1.09, 1.0, 1);
+  }
+  5%{
+    opacity: 1;
+    display: block;
+    transform: translateY(0px);
+  }
+  45%{
+    opacity: 1;
+    transform: translateY(0px);
+    display: block;
+    transition-timing-function: cubic-bezier(1, .01, 1.0, 1);
+  }
+  50%{
+    opacity: 0;
+      display: none;
+
+    transform: translateY(50px);
+  }
+  100%{
+    opacity: 0;
+    display: none;
+  }
+
+}
+
+.name, .site-title{
+  text-shadow: 2px 2px 5px black;
+  color: #c63737;
+  font-size: 60px;
+  font-weight:300;
+}
+
+.site-title{
+  margin-top: 2em;
+}
+
+.name{
+  margin-top: -2.5em;
+
+}
+
+.surname{
+  font-weight: 900;
+}
+
+.site-sous-titre{
+  font-weight: 300;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.logo-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  margin: auto;
+}
+
+.logo{
+  font-size: 40px;
+  color: white;
+}
+
+.logo:hover{
+  transition: .3s;
+  text-shadow: 2px 2px 5px black;
+  color: #c63737;
+}
+
+.fa-angle-double-down{
+  font-size: 50px;
+  margin-top: 100px;
+  color: white;
+}
+
+.fa-angle-double-down:hover{
+  color: #c63737;
+}
+
+.big{
+  font-size: 50px;
+}
+
+.icon{
+  font-size: 80px;
+  color: white;
+  margin:0 auto;
+}
+
+.icon-circle{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #c63737;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.icon-title{
+  font-size: 20px;
+  
+}
+
+.cv-year{
+  border-right: 2px solid #c63737;
+  margin-bottom: 10px;
+}
+
+.signin{
+  background: rgba(0, 0, 0, .7);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signInForm{
+  width: 300px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+
+}
+
+.close-btn{
+  color: black;
+  font-size: 30px;
+  font-weight: 400;
+  background: rgba(0,0,0,0);
+  border: 0;
+  transition: .2s;
+  float: right;
+}
+
+.close-btn:hover{
+  font-weight: 800;
+  font-size: 33px;
+}
+
+.login-input{
+  margin-top: 10vh;
+}
+
+.fa-cogs{
+  font-size: 50px;
+}
+
+.ok-btn-container{
+  display: flex;
+  align-items: center;
+}
+
+.ok-btn{
+  margin-top: 10vh;
+  width: 150%;
+  height: 50px;
+  background: #c63737;
+  border: 0;
+  color: white;
+  font-weight: 400;
+  transition: .5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ok-btn:hover{
+  background: #912626;
+  text-shadow: 1px 1px 3px #393939;
+  text-decoration: none;
+  color: white;
+}
+
+.login-enter {
+opacity: 0;
+transform: translateY(-10px);
+}
+.login-enter-active {
+opacity: 1;
+transform: translateX(0);
+transition: opacity 300ms, transform 300ms;
+}
+.login-exit {
+opacity: 1;
+transform: translateX(0);
+}
+.login-exit-active {
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 300ms, transform 300ms;
+}

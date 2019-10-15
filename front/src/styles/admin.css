@@ -1,0 +1,98 @@
+.adminBackground{
+  background: #0e98c3;
+  position:absolute;
+  width: 100%;
+  color: white;
+}
+
+.section-edit{
+  background: white;
+  width:80%;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #393939;
+}
+
+.section-edit-home{
+    margin-top:120px;
+}
+
+.section-edit-title{
+  color: #c63737;
+  padding: 20px;
+  font-weight: 300;
+}
+
+.section-edit-label{
+  color: black;
+}
+
+.input{
+  margin: 10px;
+  box-shadow: 0 0 10px #b9b9b9;
+
+}
+
+.add-btn{
+  width:30px;
+  height: 30px;
+  background: #0e98c3;
+  display:flex;
+  color: white;
+  font-size: 30px;
+  margin: 0 30px 0 0;
+  float: right;
+  padding: 15px;
+  font-weight: 400;
+  justify-content:center;
+  align-items:center;
+  border: 0;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+.add-btn:hover{
+  box-shadow: 0px 0px 5px #393939;
+  background-color: #0b6e8e;
+}
+
+.supp-btn{
+  border-radius: 50px;
+  border: 0;
+  background-color: #c63737;
+  color: white;
+  padding: 7px;
+  font-size: 12px;
+  float: right;
+  margin-left: auto;
+  margin-right: 70px;
+  transition: .3s;
+}
+
+.supp-btn:hover{
+  background-color:#9d2828;
+  box-shadow: 0px 0px 5px #393939;
+}
+
+.enregistrer-btn{
+  color: white;
+  width: 100%;
+  background: #c63737;
+  border-radius: 0px 0px 20px 20px;
+  border: 0 solid white;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  transition: .2s;
+}
+
+.enregistrer-btn:hover{
+    background: #912626;
+    text-shadow: 1px 1px 3px #393939;
+}
+
+.footer-admin{
+  background: black;
+  margin-top: 50px;
+  padding: 50px;
+}
