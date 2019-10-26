@@ -16,6 +16,8 @@ export default class Portofolio extends Component {
 
     axios.get('http://localhost:4000/portfolio')
       .then(res => {
+        console.log(res.data)
+
         res.data.forEach(function(projet) {
           that.setState({projets: [...that.state.projets,
             { title:projet.title,
@@ -23,10 +25,11 @@ export default class Portofolio extends Component {
               photo:projet.photo,
               techno:projet.techno,
               lienProjet:projet.lienProjet,
-              lienGithub:projet.lienGithub
+              lienGithub:projet.lienGitHub
             }
           ]})
         });
+        console.log(this.state.projets)
       })
       .catch(err => {
         console.log('A problem occured')
@@ -35,25 +38,37 @@ export default class Portofolio extends Component {
 
   render() {
     return (
-      <section id='portfolio' className='section text-center'>
-      <div className="container">
-        <h2 className="section-title"> Portofolio </h2>
-        {
-          this.state.projets.map((projet, index) => {
-            return(
-              <div key={index}>
-                <p>{projet.title}</p>
-                <p>{projet.description}</p>
-                <p>{projet.photo}</p>
-                <p>{projet.techno}</p>
-                <p>{projet.lienProjet}</p>
-                <p>{projet.lienGithub}</p>
-              </div>
-            )
-          })
-        }
-      </div>
-
+      <section id='portfolio' className='section text-center mb-5'>
+        <div className="container">
+          <h2 className="section-title"> Portofolio </h2>
+          <div className="project-display">
+          {
+            this.state.projets.map((projet, index) => {
+              return(
+                <div key={index} className="project-container">
+                  <div className="portfolio-content">
+                    <p className="projet-title">{projet.title}</p>
+                    <p>{projet.description}</p>
+                    <p>{projet.photo}</p>
+                    <p className='projet-logo'><i class="fas fa-code"></i></p>
+                    <p className='projet-techno'>{projet.techno}</p>
+                    <div className='d-flex justify-content-center'>
+                      <div className="projet-lien">
+                        <a href={projet.lienProjet} target="_blank"><i class="far fa-eye"></i> projet</a>
+                      </div>
+                    </div>
+                    <div className='d-flex justify-content-center'>
+                      <div className="projet-lien">
+                        <a href={projet.lienGithub} target="_blank"><i class="far fa-eye"></i> code</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
+          </div>
+        </div>
       </section>
     )
   }

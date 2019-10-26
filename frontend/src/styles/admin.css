@@ -49,6 +49,7 @@
   border: 0;
   border-radius: 50%;
   transition: .3s;
+  border: 1px solid white;
 }
 
 .add-btn:hover{
@@ -56,39 +57,38 @@
   background-color: #0b6e8e;
 }
 
-.supp-btn{
+.contain-btn{
+  float: right;
+  margin-left: auto;
+  margin-right: 70px;
+}
+
+.supp-btn, .enregistrer-btn{
   border-radius: 50px;
   border: 0;
   background-color: #c63737;
   color: white;
   padding: 7px;
   font-size: 12px;
-  float: right;
-  margin-left: auto;
-  margin-right: 70px;
   transition: .3s;
+  margin-bottom: 10px;
+}
+
+.enregistrer-btn{
+  background: #7ebf16;
+  margin-right: 10px;
 }
 
 .supp-btn:hover{
   background-color:#9d2828;
   box-shadow: 0px 0px 5px #393939;
-}
-
-.enregistrer-btn{
-  color: white;
-  width: 100%;
-  background: #c63737;
-  border-radius: 0px 0px 20px 20px;
-  border: 0 solid white;
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 20px;
-  transition: .2s;
+  text-shadow: 1px 1px 3px #393939;
 }
 
 .enregistrer-btn:hover{
-    background: #912626;
+    background: #66970b;
     text-shadow: 1px 1px 3px #393939;
+    box-shadow: 0px 0px 5px #77b414;
 }
 
 .footer-admin{

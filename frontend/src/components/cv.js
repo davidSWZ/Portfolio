@@ -39,13 +39,13 @@ export default class CV extends Component {
           {
             this.state.experience.map((experience, index) => {
               return(
-                <div key={index} className="row">
-                  <div className="cv-year col-2">
+                <div key={index} className="row mt-5">
+                  <div className="cv-year col-3">
                     <p>{experience.when}</p>
                   </div>
-                  <div className="col-2">
-                    <p>{experience.title}</p>
-                    <p>{experience.where}</p>
+                  <div className="col-9">
+                    <p className="cv-title">{experience.title}</p>
+                    <p className="cv-lieu">{experience.where}</p>
                     <p>{experience.description}</p>
                   </div>
 
@@ -53,6 +53,12 @@ export default class CV extends Component {
               )
             })
           }
+          <p className='mt-5'> Télécharger le CV </p>
+          <div className='d-flex justify-content-center pb-5'>
+              <div className='download-btn'>
+                <a href="CV_d.swiatkiewiez.pdf" download> <i class="fas fa-download"></i> </a>
+              </div>
+          </div>
         </div>
       </section>
     )

@@ -32,7 +32,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <section id='home' className='section'>
+      <section id='home' className='section '>
         <div className='container text-center'>
           <div className="animation-home">
             <h1 className="site-title" dangerouslySetInnerHTML={{ __html: this.state.home_title }}></h1>
@@ -41,8 +41,12 @@ export default class Home extends Component {
           <div className="animation-logo">
             <h1 className="name">David<span className="surname">SWIATKIEWIEZ</span></h1>
             <div className='logo-container'>
-            <RouterLink to='https://github.com/davidSWZ'><i className="fab fa-github-square logo"></i></RouterLink>
-            <RouterLink to='https://www.linkedin.com/in/david-swiatkiewiez-7380b876/?originalSubdomain=fr'><i className="fab fa-linkedin logo"></i></RouterLink>
+              <a href='https://github.com/davidSWZ' target="_blank">
+                <i className="fab fa-github-square logo"></i>
+              </a>
+              <a href='https://www.linkedin.com/in/david-swiatkiewiez-7380b876/?originalSubdomain=fr'                target="_blank">
+                <i className="fab fa-linkedin logo"></i>
+              </a>
             </div>
           </div>
           <Link

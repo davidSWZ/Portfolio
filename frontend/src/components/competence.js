@@ -4,9 +4,9 @@ import axios from 'axios';
 class Icon extends Component{
   render() {
     return(
-      <div className="m-5 text-center">
+      <div key={this.props.index} className="m-5 text-center">
         <div className='icon-circle'>
-          <div className='icon-circle icon'>
+          <div className='icon'>
             {this.props.icon}
           </div>
         </div>
@@ -44,13 +44,13 @@ export default class Competence extends Component {
     return (
       <section id='competence' className='section text-center'>
         <div className='container'>
-          <h2 className='section-title'> Compétence </h2>
+          <h2 className='section-title'> Compétences </h2>
           <div className='row text-center'>
             {
-              this.state.competence.map((competence) => {
+              this.state.competence.map((competence, index) => {
                 var icon =<i class={competence.icon} size='7x'></i>;
                 return(
-                  <Icon icon={icon} value={competence.value}/>
+                  <Icon icon={icon} index={index} value={competence.value}/>
                 )
               })
             }

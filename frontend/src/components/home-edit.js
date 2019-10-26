@@ -6,8 +6,7 @@ export default class HomeEdit extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeHomeTitle = this.onChangeHomeTitle.bind(this);
-    this.onChangeHomeDescription = this.onChangeHomeDescription.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state={
@@ -29,15 +28,9 @@ export default class HomeEdit extends Component {
       })
   }
 
-  onChangeHomeTitle(e) {
+  onChange(e) {
     this.setState({
-      home_title: e.target.value
-    })
-  }
-
-  onChangeHomeDescription(e) {
-    this.setState({
-      home_description: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
@@ -72,9 +65,9 @@ export default class HomeEdit extends Component {
                 <input  type='text'
                         id='input-title'
                         className='form-control input'
-                        placeholder=''
+                        name='home_title'
                         value={this.state.home_title}
-                        onChange={this.onChangeHomeTitle}
+                        onChange={this.onChange}
                         />
               </div>
             </div>
@@ -84,9 +77,9 @@ export default class HomeEdit extends Component {
               <div className='col-sm-9'>
                 <textarea   id='input-description'
                             className='form-control input'
-                            placeholder=''
+                            name='home_description'
                             value={this.state.home_description}
-                            onChange={this.onChangeHomeDescription}
+                            onChange={this.onChange}
                             >
                 </textarea>
               </div>

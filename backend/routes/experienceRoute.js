@@ -14,22 +14,37 @@ router.get('/', function(req, res) {
 
 router.post('/add', function(req, res) {
   let newExperience = new experience(req.body);
-  newExperience.save()
+  if(req.body.id && req.body.id !== null){
+    experience.findOneAndUpdate({_id:req.body.id}, req.body, function (err) {
+      if(!err) {
+        res.status(200).json({'experience':'experience modified'});
+        console.log('experience updated');
+      } else {
+        res.status(400).send('A problem occured')
+        console.log(err);
+      }
+    })
+  } else (
+    newExperience.save()
     .then(newExperience => {
-      res.status(200).json({'experience':'New experience added successfully'})
+      res.status(200).json({'experience':'New experience added successfully'});
+      console.log('experience:New experience added successfully');
     })
     .catch(err => {
-      res.status(400).send('A problem occured')
+      res.status(400).send('A problem occured');
+      console.log(err);
     })
+  )
 });
 
 router.delete('/delete', function(req, res) {
-  experience.remove({}, function(err) {
+  experience.deleteOne({_id:req.body.id}, function(err) {
     if(!err) {
-      console.log('Deleted all experiences');
+      console.log('Deleted one experience');
     } else {
       console.log(err);
     }
   })
-})
+});
+
 module.exports = router

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import SaveBtn from './saveBtn';
+import SuppBtn from './suppBtn';
+import AddBtn from './addBtn';
 
 export default class CompetenceEdit extends Component {
 
@@ -23,7 +26,7 @@ export default class CompetenceEdit extends Component {
     axios.get('http://localhost:4000/competence')
       .then(res => {
         res.data.forEach(function(competence) {
-          that.setState({competence: [...that.state.competence, {value:competence.value, icon:competence.icon}]})
+          that.setState({competence: [...that.state.competence, {value:competence.value, icon:competence.icon, id:competence._id}]})
         });
       })
       .catch(err => {
@@ -33,48 +36,44 @@ export default class CompetenceEdit extends Component {
 
   addCompetence() {
     this.setState({
-      competence: [...this.state.competence, {value:'', icon:this.state.icon}],
+      competence: [...this.state.competence, {value:'', icon:this.state.icon, modified:false}],
     });
   }
 
   onChangeCompetenceValue(e, index) {
     this.state.competence[index].value = e.target.value;
-
+    this.state.competence[index].modified = true;
     this.setState({competence: this.state.competence})
   }
 
   onChangeCompetenceIcon(e, index) {
     this.state.competence[index].icon = e.target.value;
+    this.state.competence[index].modified = true;
 
     this.setState({competence: this.state.competence})
   }
 
-  handleRemove(index) {
-    this.state.competence.splice(index, 1)
-
-    this.setState({ competence : this.state.competence})
+  handleRemove(e, index) {
+    axios.delete('http://localhost:4000/competence/delete', {data:{Value:this.state.competence[index].value}})
+    .then(
+      this.state.competence.splice(index, 1)
+    )
+    .then(
+      this.setState({ competence : this.state.competence})
+    )
   }
 
-  onSubmit(e) {
-    let competences = this.state.competence;
-
-    axios.delete('http://localhost:4000/competence/delete', {data:{}})
-      .then(
-        competences.forEach(function(competence) {
-          let competenceAdded = {
-            value : competence.value,
-            icon : competence.icon
-          }
-          axios.post('http://localhost:4000/competence/add', competenceAdded)
-          .then(res => {console.log(competenceAdded)})
-          .catch(function(err) {
-            console.log(err);
-          })
-        })
-      )
-      .catch(function(err) {
-        console.log(err);
-      })
+  onSubmit(e, index) {
+    e.preventDefault();
+    let competence = this.state.competence[index];
+    axios.post('http://localhost:4000/competence/add', competence)
+    .then(res => {
+        this.state.competence[index].modified = false;
+        this.setState({competence: this.state.competence});
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
   }
 
   render() {
@@ -98,24 +97,15 @@ export default class CompetenceEdit extends Component {
                           placeholder='Compétence'
                           onChange={(e) => this.onChangeCompetenceValue(e, index)}
                           />
-                    <button className='supp-btn'
-                            onClick={() => this.handleRemove(index)}
-                            > Supprimer
-                    </button>
+                    <div className="contain-btn">
+                      <SaveBtn modified={competence.modified} onSubmit={(e) => this.onSubmit(e, index)}/>
+                      <SuppBtn handleRemove={(e) => this.handleRemove(e, index)} />
+                    </div>
                 </div>
               )
             })
           }
-          <button className='add-btn'
-                  onClick={this.addCompetence}
-                  >+
-          </button>
-          <div>
-            <button className='enregistrer-btn'
-                    onClick={this.onSubmit}
-                    >Enregistrer
-            </button>
-          </div>
+          <AddBtn addelement= {this.addCompetence} />
         </div>
       </section>
     )

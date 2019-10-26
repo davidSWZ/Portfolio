@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import SaveBtn from './saveBtn';
+import SuppBtn from './suppBtn';
+import AddBtn from './addBtn';
 
 export default class CVEdit extends Component {
 
@@ -29,7 +32,8 @@ export default class CVEdit extends Component {
             { title:experience.title,
               where:experience.where,
               when:experience.when,
-              description:experience.description
+              description:experience.description,
+              id:experience._id
             }
           ]})
         });
@@ -41,58 +45,65 @@ export default class CVEdit extends Component {
 
 
   addExperience() {
-    this.setState({experience: [...this.state.experience, {title:'', where:'', when:'', description:''}]})
+    this.setState(
+      {experience: [...this.state.experience, {
+        title:'',
+        where:'',
+        when:'',
+        description:'',
+        id:null,
+        modified: false
+      }]})
   }
 
   onChangeExperienceTitle(e, index) {
     this.state.experience[index].title = e.target.value;
-
+    this.state.experience[index].modified = true;
     this.setState({experience:this.state.experience});
   }
 
   onChangeExperienceWhere(e, index) {
     this.state.experience[index].where = e.target.value;
-
+    this.state.experience[index].modified = true;
     this.setState({experience:this.state.experience});
   }
 
   onChangeExperienceWhen(e, index) {
     this.state.experience[index].when = e.target.value;
-
+    this.state.experience[index].modified = true;
     this.setState({experience:this.state.experience});
   }
 
   onChangeExperienceDescription(e, index) {
     this.state.experience[index].description = e.target.value;
-
+    this.state.experience[index].modified = true;
     this.setState({experience:this.state.experience});
   }
 
-  handleRemove(index) {
-    this.state.experience.splice(index, 1);
-
-    this.setState({experience:this.state.experience});
+  handleRemove(e, index) {
+    axios.delete('http://localhost:4000/experience/delete', {data:{id:this.state.experience[index].id}})
+    .then(
+      this.state.experience.splice(index, 1)
+    )
+    .then(
+      this.setState({ experience : this.state.experience})
+    )
   }
 
-  onSubmit(e) {
+
+
+  onSubmit(e, index) {
     e.preventDefault();
+    let experience = this.state.experience[index];
 
-    let experiences = this.state.experience;
-
-    axios.delete('http://localhost:4000/experience/delete', {data:{}})
-      .then(
-        experiences.forEach(function(experience) {
-
-          axios.post('http://localhost:4000/experience/add', experience)
-          .then(res => {console.log(experience)})
-          .catch(function(err) {
-            console.log(err);
-          })
-        })
-      )
-      .catch(function(err) {
-        console.log(err);
-      })
+    axios.post('http://localhost:4000/experience/add', experience)
+    .then(res => {
+      this.state.experience[index].modified = false;
+      this.setState({experience: this.state.experience});
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
   }
 
   render() {
@@ -136,27 +147,16 @@ export default class CVEdit extends Component {
                                 onChange={(e) => {this.onChangeExperienceDescription(e, index)}}
                               >
                       </textarea>
-                      <button className='supp-btn'
-                              onClick={() => {this.handleRemove(index)}}
-                              >
-                        Supprimer
-                      </button>
+
+                      <div className="contain-btn">
+                        <SaveBtn modified={exp.modified} onSubmit={(e) => this.onSubmit(e, index)}/>
+                        <SuppBtn handleRemove={(e) => this.handleRemove(e, index)} />
+                      </div>
                   </div>
                 )
               })
             }
-          <div>
-            <button className='add-btn'
-                    onClick = {this.addExperience}
-                    >+
-            </button>
-          </div>
-          <div>
-            <button className='enregistrer-btn'
-                    onClick = {this.onSubmit}
-                    >Enregistrer
-            </button>
-          </div>
+          <AddBtn addelement= {this.addExperience} />
         </div>
       </section>
     )

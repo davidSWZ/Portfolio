@@ -14,23 +14,38 @@ router.get('/', function(req, res) {
 
 router.post('/add', function(req, res) {
   let newprojet = new projet(req.body);
-  newprojet.save()
+
+  if(req.body.id && req.body.id !== null){
+    projet.findOneAndUpdate({_id:req.body.id}, req.body, function (err) {
+      if(!err) {
+        res.status(200).json({'projet':'projet modified'});
+        console.log('projet updated');
+      } else {
+        res.status(400).send('A problem occured')
+        console.log(err);
+      }
+    })
+  } else (
+    newprojet.save()
     .then(newprojet => {
-      res.status(200).json({'portfolio':'New projet added successfully'})
+      res.status(200).json({'projet':'New projet added successfully'});
+      console.log('projet:New projet added successfully');
     })
     .catch(err => {
-      res.status(400).send('A problem occured')
+      res.status(400).send('A problem occured');
+      console.log(err);
     })
+  )
 });
 
 router.delete('/delete', function(req, res) {
-  projet.remove({}, function(err) {
+  projet.deleteOne({_id:req.body.id}, function(err) {
     if(!err) {
-      console.log('Deleted al projectsl');
+      console.log('Deleted one projet');
     } else {
       console.log(err);
     }
   })
-})
+});
 
 module.exports = router
