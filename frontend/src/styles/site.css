@@ -103,7 +103,7 @@ nav{
   font-weight: 300;
 }
 
-#home, #competence, #cv, #portfolio, #contact{
+#home, #competence, #cv, #cv-edit, #portfolio, #contact{
   padding-top: 70px;
 }
 
@@ -112,6 +112,10 @@ nav{
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: white;
+}
+
+#portfolio{
+  min-height: 100vh;
 }
 
 #home{
@@ -124,18 +128,20 @@ nav{
   background-image: url("./images/cv-background.jpg");
 }
 
+#contact{
+height: 100vh;
+background: black;
+color: white;
+min-height: 80vh;
+}
+
 .bg-red{
   background: #c63737;
   color: white;
   padding-bottom: 70px;
 }
 
-#contact{
-margin-bottom: 0px;
-background: black;
-color: white;
-min-height: 80vh;
-}
+
 
 .home-background{
     filter: blur(3px);
@@ -197,6 +203,11 @@ min-height: 80vh;
 .name{
   margin-top: -2.5em;
 
+}
+
+.name-footer{
+  margin-top: 30px;
+  font-size: 15px;
 }
 
 .surname{

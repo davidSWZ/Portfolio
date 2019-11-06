@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { HashLink as RouterLink } from 'react-router-hash-link';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import axios from 'axios';
 import '../styles/site.css';
 import logo from '../styles/images/logo-swz.png';

@@ -6,10 +6,13 @@ const express = require('express'),
       passport = require('passport'),
       localStrategy = require('passport-local'),
       User = require('./models/user'),
+      formData = require("express-form-data"),
       mongoose = require('mongoose');
 
 //Liaison au fichier .env
 require('dotenv').config();
+
+app.use(formData.parse());
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -41,12 +44,14 @@ const homeRoute = require('./routes/homeRoute'),
       experienceRoute = require('./routes/experienceRoute'),
       portfolioRoute = require('./routes/portfolioRoute');
       signinRoute = require('./routes/signinRoute');
+      mailerRoute = require('./routes/mailerRoute');
 
 app.use('/home', homeRoute);
 app.use('/competence', competenceRoute);
 app.use('/experience', experienceRoute);
 app.use('/portfolio', portfolioRoute);
 app.use('/signin' , signinRoute);
+app.use('/mailer', mailerRoute);
 
 // app.post("/register", function(req, res) {
 //   var admin = new User({username:req.body.username});

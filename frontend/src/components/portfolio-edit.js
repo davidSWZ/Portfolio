@@ -20,7 +20,8 @@ export default class PortfolioEdit extends Component {
     this.handleRemove = this.handleRemove.bind(this);
 
     this.state={
-      projets:[]
+      projets:[],
+      photo:''
     }
   }
 
@@ -75,9 +76,23 @@ export default class PortfolioEdit extends Component {
   }
 
   onChangeProjetPhoto(e, index) {
-    this.state.projets[index].photo= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
+    const files = Array.from(e.target.files)
+    const formData = new FormData()
+
+    files.forEach((file, i) => {
+       formData.append(i, file)
+    })
+
+    let projet = this.state.projets[index];
+        projet.photo=formData
+        console.log(projet)
+    axios.post('http://localhost:4000/portfolio/add', formData)
+    .then(res => {
+      console.log("photo sauvée")
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
   }
 
   onChangeProjetTechno(e, index) {
@@ -112,7 +127,7 @@ export default class PortfolioEdit extends Component {
     e.preventDefault();
 
     let projet = this.state.projets[index];
-    console.log(projet)
+    projet.photo=this.state.photo
     axios.post('http://localhost:4000/portfolio/add', projet)
     .then(res => {
       this.state.projets[index].modified = false;
@@ -165,8 +180,9 @@ export default class PortfolioEdit extends Component {
                                   />
                           <label htmlFor='projetPhoto' className='col-form-label section-edit-label col-sm-2'>Photo</label>
                           <input  value={projet.photo}
+                                  type='file'
                                   id='projetPhoto'
-                                  className='form-control col-sm-9 input'
+                                  className='col-sm-9'
                                   onChange={(e) => {this.onChangeProjetPhoto(e, index)}}
                                   />
                   <div className="contain-btn">

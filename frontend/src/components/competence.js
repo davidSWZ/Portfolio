@@ -48,7 +48,7 @@ export default class Competence extends Component {
           <div className='row text-center'>
             {
               this.state.competence.map((competence, index) => {
-                var icon =<i class={competence.icon} size='7x'></i>;
+                var icon =<i className={competence.icon} size='7x'></i>;
                 return(
                   <Icon icon={icon} index={index} value={competence.value}/>
                 )

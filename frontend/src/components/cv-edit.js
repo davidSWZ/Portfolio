@@ -108,7 +108,7 @@ export default class CVEdit extends Component {
 
   render() {
     return (
-      <section id='cv'>
+      <section id='cv-edit'>
         <div className="section-edit">
           <h2 className='section-edit-title'> CURRICULUM </h2>
             {

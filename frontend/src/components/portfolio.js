@@ -50,16 +50,16 @@ export default class Portofolio extends Component {
                     <p className="projet-title">{projet.title}</p>
                     <p>{projet.description}</p>
                     <p>{projet.photo}</p>
-                    <p className='projet-logo'><i class="fas fa-code"></i></p>
+                    <p className='projet-logo'><i className="fas fa-code"></i></p>
                     <p className='projet-techno'>{projet.techno}</p>
                     <div className='d-flex justify-content-center'>
                       <div className="projet-lien">
-                        <a href={projet.lienProjet} target="_blank"><i class="far fa-eye"></i> projet</a>
+                        <a href={projet.lienProjet} target="_blank"><i className="far fa-eye"></i> projet</a>
                       </div>
                     </div>
                     <div className='d-flex justify-content-center'>
                       <div className="projet-lien">
-                        <a href={projet.lienGithub} target="_blank"><i class="far fa-eye"></i> code</a>
+                        <a href={projet.lienGithub} target="_blank"><i className="far fa-eye"></i> code</a>
                       </div>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 function SaveBtn(props){
   const modified = props.modified;

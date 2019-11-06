@@ -2,10 +2,9 @@ Gerer les photo de mes projet portfolio (download bon vers mongo)
 Ajouter passport.js
 Ajouter un bouton LogOut et enlever le lien vers la page d’accueil sont le logo de mon nom
 rendre le tout responsive
-mettre en forme portfolio
-faire les forms pour chaque portfolio
-mettre en forme contact
-ajouter un formulaire a contact pour m’envoyer un mail
+faire les carousel pour chaque portfolio
 mettre partie presentation en debut de CV et renommer la partie A propos 
 voir gitognore sur github
 voir responsive avec chrome
+show on scroll
+process.env.mailer password

@@ -56,7 +56,7 @@ export default class CV extends Component {
           <p className='mt-5'> Télécharger le CV </p>
           <div className='d-flex justify-content-center pb-5'>
               <div className='download-btn'>
-                <a href="CV_d.swiatkiewiez.pdf" download> <i class="fas fa-download"></i> </a>
+                <a href="CV_d.swiatkiewiez.pdf" download> <i className="fas fa-download"></i> </a>
               </div>
           </div>
         </div>
