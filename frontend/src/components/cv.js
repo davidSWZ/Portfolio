@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import AnimateOnScroll from './animate-on-scroll';
 
 export default class CV extends Component {
 
@@ -39,17 +40,18 @@ export default class CV extends Component {
           {
             this.state.experience.map((experience, index) => {
               return(
-                <div key={index} className="row mt-5">
-                  <div className="cv-year col-3">
-                    <p>{experience.when}</p>
+                <AnimateOnScroll>
+                  <div key={index} className="row mt-5">
+                    <div className="cv-year col-3">
+                      <p>{experience.when}</p>
+                    </div>
+                    <div className="col-9">
+                      <p className="cv-title">{experience.title}</p>
+                      <p className="cv-lieu">{experience.where}</p>
+                      <p>{experience.description}</p>
+                    </div>
                   </div>
-                  <div className="col-9">
-                    <p className="cv-title">{experience.title}</p>
-                    <p className="cv-lieu">{experience.where}</p>
-                    <p>{experience.description}</p>
-                  </div>
-
-                </div>
+                </AnimateOnScroll>
               )
             })
           }

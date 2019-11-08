@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import AnimateOnScroll from './animate-on-scroll';
+
 
 class Icon extends Component{
   render() {
     return(
+      <AnimateOnScroll>
       <div key={this.props.index} className="m-5 text-center">
         <div className='icon-circle'>
           <div className='icon'>
@@ -12,6 +15,7 @@ class Icon extends Component{
         </div>
         <p className="icon-title">{this.props.value}</p>
       </div>
+      </AnimateOnScroll>
     )
   }
 }
@@ -44,7 +48,9 @@ export default class Competence extends Component {
     return (
       <section id='competence' className='section text-center'>
         <div className='container'>
+
           <h2 className='section-title'> Compétences </h2>
+          
           <div className='row text-center'>
             {
               this.state.competence.map((competence, index) => {

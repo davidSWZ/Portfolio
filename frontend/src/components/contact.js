@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Flash from './flash';
+import AnimateOnScroll from './animate-on-scroll';
 
 export default class Contact extends Component {
   constructor(props) {
@@ -70,56 +71,58 @@ export default class Contact extends Component {
           </div>
         </div>
 
-        <form className='mt-2 container'>
-        <div className='d-flex justify-content-center'>
-          <input  type='text'
-                  name='name'
-                  className='form-control col-sm-9 input'
-                  placeholder='Prénom'
-                  value={this.state.name}
-                  onChange={e => {this.onChange(e)}}
-                  />
-        </div>
-        <div className='d-flex justify-content-center'>
-          <input  type='text'
-                  name='surname'
-                  placeholder='Nom'
-                  className='form-control col-sm-9 input mt-3'
-                  value={this.state.surname}
-                  onChange={e => {this.onChange(e)}}
-                  />
-        </div>
-        <div className='d-flex justify-content-center'>
-          <input  type='text'
-                  name='mail'
-                  placeholder='Adresse mail'
-                  className='form-control col-sm-9 input mt-3'
-                  value={this.state.mail}
-                  onChange={e => {this.onChange(e)}}
-                  />
-        </div>
-        <div className='d-flex justify-content-center'>
-          <textarea type='text'
-                    name='message'
-                    placeholder='Expliquez moi votre projet'
-                    className='form-control col-sm-9 input mt-3'
-                    value={this.state.message}
+        <AnimateOnScroll>
+          <form className='mt-2 container'>
+          <div className='d-flex justify-content-center'>
+            <input  type='text'
+                    name='name'
+                    className='form-control col-sm-9 input'
+                    placeholder='Prénom'
+                    value={this.state.name}
                     onChange={e => {this.onChange(e)}}
-                  >
-          </textarea>
-        </div>
-        <div className='d-flex justify-content-center'>
-          <button className='enregistrer-btn pl-3 pr-3'
-                  onClick= {e => {this.onSubmit(e)}}
-                  ><i class="fas fa-paper-plane"></i> Envoyer
-          </button>
-        </div>
-        <Flash
-          text="Votre message a bien été envoyé."
-          texterror="Veuillez remplir tous les champs"
-          sent={this.state.sent}
-        />
-        </form>
+                    />
+          </div>
+          <div className='d-flex justify-content-center'>
+            <input  type='text'
+                    name='surname'
+                    placeholder='Nom'
+                    className='form-control col-sm-9 input mt-3'
+                    value={this.state.surname}
+                    onChange={e => {this.onChange(e)}}
+                    />
+          </div>
+          <div className='d-flex justify-content-center'>
+            <input  type='text'
+                    name='mail'
+                    placeholder='Adresse mail'
+                    className='form-control col-sm-9 input mt-3'
+                    value={this.state.mail}
+                    onChange={e => {this.onChange(e)}}
+                    />
+          </div>
+          <div className='d-flex justify-content-center'>
+            <textarea type='text'
+                      name='message'
+                      placeholder='Expliquez moi votre projet'
+                      className='form-control col-sm-9 input mt-3'
+                      value={this.state.message}
+                      onChange={e => {this.onChange(e)}}
+                    >
+            </textarea>
+          </div>
+          <div className='d-flex justify-content-center'>
+            <button className='enregistrer-btn pl-3 pr-3'
+                    onClick= {e => {this.onSubmit(e)}}
+                    ><i class="fas fa-paper-plane"></i> Envoyer
+            </button>
+          </div>
+          <Flash
+            text="Votre message a bien été envoyé."
+            texterror="Veuillez remplir tous les champs"
+            sent={this.state.sent}
+          />
+          </form>
+        </AnimateOnScroll>
         <h1 className="name-footer">David<span className="surname">SWIATKIEWIEZ</span></h1>
       </footer>
     )

@@ -1,4 +1,3 @@
-show on scroll
 mettre partie presentation en debut de CV et renommer la partie A propos 
 rendre le tout responsive
 voir gitognore sur github

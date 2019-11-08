@@ -160,7 +160,7 @@ min-height: 80vh;
   -moz-animation-duration: 10s;
   -ms-animation-duration: 10s;
   -o-animation-duration: 10s;
-  
+
   animation-name: 'change-title';
   animation-iteration-count: infinite;
   animation-duration: 10s;
@@ -640,4 +640,73 @@ transition: opacity 300ms, transform 300ms;
 .projet-techno{
   font-size: 13px;
   font-style: italic;
+}
+
+.element{
+  margin-right: 30px;
+  opacity: 0;
+}
+
+.element-animate{
+  -webkit-animation: fadein .8s;
+  -o-animation: fadein .8s ;
+  -ms-animation: fadein .8s ;
+  -moz-animation: fadein .8s ;
+  animation: fadein .8s;
+
+  -webkit-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  -ms-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+
+  margin-right: 0px;
+  opacity: 1;
+
+}
+
+@-moz-keyframes fadein {
+  from { opacity: 0;
+    margin-right: 30px;
+  }
+  to   { opacity: 1;
+    margin-right: 0px;
+  }
+}
+
+@-ms-keyframes fadein {
+  from { opacity: 0;
+    margin-right: 30px;
+  }
+  to   { opacity: 1;
+    margin-right: 0px;
+  }
+}
+
+@-o-keyframes fadein {
+  from { opacity: 0;
+    margin-right: 30px;
+  }
+  to   { opacity: 1;
+    margin-right: 0px;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0;
+    margin-right: 30px;
+  }
+  to   { opacity: 1;
+    margin-right: 0px;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0;
+    margin-right: 30px;
+  }
+  to   { opacity: 1;
+    margin-right: 0px;
+  }
 }

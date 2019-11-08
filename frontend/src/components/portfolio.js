@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import AnimateOnScroll from './animate-on-scroll';
 
 export default class Portofolio extends Component {
 
@@ -45,6 +46,8 @@ export default class Portofolio extends Component {
           {
             this.state.projets.map((projet, index) => {
               return(
+                <AnimateOnScroll>
+
                 <div key={index} className="project-container">
                   <div className="portfolio-content">
                     <p className="projet-title">{projet.title}</p>
@@ -64,6 +67,8 @@ export default class Portofolio extends Component {
                     </div>
                   </div>
                 </div>
+                </AnimateOnScroll>
+
               )
             })
           }
