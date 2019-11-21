@@ -23,7 +23,7 @@ export default class CompetenceEdit extends Component {
   componentDidMount() {
     let that = this;
 
-    axios.get('http://localhost:4000/competence')
+    axios.get(process.env.REACT_APP_API_URL+'competence')
       .then(res => {
         res.data.forEach(function(competence) {
           that.setState({competence: [...that.state.competence, {value:competence.value, icon:competence.icon, id:competence._id}]})
