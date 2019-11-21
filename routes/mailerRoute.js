@@ -3,8 +3,8 @@ const express = require('express'),
       nodeMailer = require('nodemailer');
 
 router.post('/', function(req, res) {
-  let transporter = nodeMailer.createTransport({
-    service: 'outlook',
+  let transporter = nodeMailer.createTransport("SMTP", {
+    service: 'hotmail',
     auth: {
       user: process.env.NODEMAILER_USER,
       pass: process.env.NODEMAILER_PASSWORD
