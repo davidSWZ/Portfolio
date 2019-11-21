@@ -4,7 +4,7 @@ const express = require('express'),
 
 router.post('/', function(req, res) {
   let transporter = nodeMailer.createTransport({
-    service: 'gmail',
+    service: 'outlook',
     auth: {
       user: process.env.NODEMAILER_USER,
       pass: process.env.NODEMAILER_PASSWORD
