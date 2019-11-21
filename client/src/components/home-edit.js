@@ -16,7 +16,7 @@ export default class HomeEdit extends Component {
   }
 
   componentDidMount(){
-    axios.get('http://localhost:4000/home')
+    axios.get(process.env.REACT_APP_API_URL + 'home')
       .then(res => {
         this.setState({
           home_title: res.data[0].home_title,
@@ -45,7 +45,7 @@ export default class HomeEdit extends Component {
       home_description : this.state.home_description
     }
 
-    axios.post('http://localhost:4000/home/update/5d59b6da50789503228686b6', homeUpdate)
+    axios.post(process.env.REACT_APP_API_URL + 'home/update/5d59b6da50789503228686b6', homeUpdate)
       .then(res => console.log("Home updated"))
       .catch(function(err) {
         console.log(err);

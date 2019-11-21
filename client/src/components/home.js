@@ -16,7 +16,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:4000/home")
+    axios.get(process.env.REACT_APP_API_URL + 'home')
     .then(res => {
       this.setState({
         home_title:res.data[0].home_title,

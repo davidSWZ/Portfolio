@@ -25,7 +25,7 @@ export default class CVEdit extends Component {
   componentDidMount() {
     let that = this;
 
-    axios.get('http://localhost:4000/experience')
+    axios.get(process.env.REACT_APP_API_URL + 'experience')
       .then(res => {
         res.data.forEach(function(experience) {
           that.setState({experience: [...that.state.experience,
@@ -81,7 +81,7 @@ export default class CVEdit extends Component {
   }
 
   handleRemove(e, index) {
-    axios.delete('http://localhost:4000/experience/delete', {data:{id:this.state.experience[index].id}})
+    axios.delete(process.env.REACT_APP_API_URL + 'experience/delete', {data:{id:this.state.experience[index].id}})
     .then(
       this.state.experience.splice(index, 1)
     )
@@ -96,7 +96,7 @@ export default class CVEdit extends Component {
     e.preventDefault();
     let experience = this.state.experience[index];
 
-    axios.post('http://localhost:4000/experience/add', experience)
+    axios.post(process.env.REACT_APP_API_URL + 'experience/add', experience)
     .then(res => {
       this.state.experience[index].modified = false;
       this.setState({experience: this.state.experience});

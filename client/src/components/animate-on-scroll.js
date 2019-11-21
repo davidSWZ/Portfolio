@@ -7,7 +7,6 @@ export default class animateOnScroll extends Component {
     super(props);
 
     this.onEnterViewport = this.onEnterViewport.bind(this);
-    // this.onExitViewport = this.onExitViewport.bind(this);
 
     this.state={
       visible:false,
@@ -19,12 +18,6 @@ export default class animateOnScroll extends Component {
     visible: true,
   });
   }
-
-  // onExitViewport() {
-  // this.setState({
-  //   visible: false,
-  // });
-  // }
 
   render() {
     return (

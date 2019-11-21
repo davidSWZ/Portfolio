@@ -15,7 +15,7 @@ export default class CV extends Component {
   componentDidMount() {
     let that = this;
 
-    axios.get('http://localhost:4000/experience')
+    axios.get(process.env.REACT_APP_API_URL + 'experience')
       .then(res => {
         res.data.forEach(function(experience) {
           that.setState({experience: [...that.state.experience,

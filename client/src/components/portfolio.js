@@ -15,7 +15,7 @@ export default class Portofolio extends Component {
   componentDidMount() {
     let that = this;
 
-    axios.get('http://localhost:4000/portfolio')
+    axios.get(process.env.REACT_APP_API_URL + 'portfolio')
       .then(res => {
         console.log(res.data)
 

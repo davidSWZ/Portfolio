@@ -32,7 +32,7 @@ export default class Contact extends Component {
     this.setState({...this.state, sent:''})
 
     if (this.state.name !== '' && this.state.surname!== '' && this.state.mail!== '' && this.state.message!== '') {
-      axios.post('http://localhost:4000/mailer', this.state)
+      axios.post(process.env.REACT_APP_API_URL + 'mailer', this.state)
       .then(res => {
         this.setState({
           name:'',

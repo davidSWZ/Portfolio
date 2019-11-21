@@ -28,7 +28,7 @@ export default class PortfolioEdit extends Component {
   componentDidMount() {
     let that = this;
 
-    axios.get('http://localhost:4000/portfolio')
+    axios.get(process.env.REACT_APP_API_URL + 'portfolio')
       .then(res => {
         res.data.forEach(function(projet) {
           that.setState({projets: [...that.state.projets,
@@ -86,7 +86,7 @@ export default class PortfolioEdit extends Component {
     let projet = this.state.projets[index];
         projet.photo=formData
         console.log(projet)
-    axios.post('http://localhost:4000/portfolio/add', formData)
+    axios.post(process.env.REACT_APP_API_URL + 'portfolio/add', formData)
     .then(res => {
       console.log("photo sauvée")
     })
@@ -114,7 +114,7 @@ export default class PortfolioEdit extends Component {
   }
 
   handleRemove(e, index) {
-    axios.delete('http://localhost:4000/portfolio/delete', {data:{id:this.state.projets[index].id}})
+    axios.delete(process.env.REACT_APP_API_URL + 'portfolio/delete', {data:{id:this.state.projets[index].id}})
     .then(
       this.state.projets.splice(index, 1)
     )
@@ -128,7 +128,7 @@ export default class PortfolioEdit extends Component {
 
     let projet = this.state.projets[index];
     projet.photo=this.state.photo
-    axios.post('http://localhost:4000/portfolio/add', projet)
+    axios.post(process.env.REACT_APP_API_URL + 'portfolio/add', projet)
     .then(res => {
       this.state.projets[index].modified = false;
       this.setState({projets: this.state.projets});
