@@ -54,7 +54,7 @@ export default class CompetenceEdit extends Component {
   }
 
   handleRemove(e, index) {
-    axios.delete('http://localhost:4000/competence/delete', {data:{Value:this.state.competence[index].value}})
+    axios.delete(process.env.REACT_APP_API_URL + 'competence/delete', {data:{Value:this.state.competence[index].value}})
     .then(
       this.state.competence.splice(index, 1)
     )
@@ -66,7 +66,7 @@ export default class CompetenceEdit extends Component {
   onSubmit(e, index) {
     e.preventDefault();
     let competence = this.state.competence[index];
-    axios.post('http://localhost:4000/competence/add', competence)
+    axios.post(process.env.REACT_APP_API_URL + 'competence/add', competence)
     .then(res => {
         this.state.competence[index].modified = false;
         this.setState({competence: this.state.competence});
