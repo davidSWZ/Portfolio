@@ -1,38 +1,10 @@
 mettre partie presentation en debut de CV et renommer la partie A propos 
 rendre le tout responsive
-voir gitognore sur github
 process.env.mailer password
 Gerer les photo de mes projet portfolio (download bon vers mongo)
 faire les carousel pour chaque portfolio
 Ajouter passport.js
 Ajouter un bouton LogOut et enlever le lien vers la page d’accueil sont le logo de mon nom
-
-
-25 interne vincennes
-400 france
-90 vincennes en entreprise
-
-reunion skype 
-dev java
-chef projet
-sig
-sig 3 personne chef projet et un dev 4 ans d’experiences
-
-65% brut mensuel
-vacance %1% annuel brut
-6 semaines cone plus 10 jours rtt
-
-5 et 6eme etage
-
-entretien locaux
-directeur de projet responsable sig
-ratp
-
-j2ee et java
-
-mardi 18h
-
-envoyé cv 
 
 
 
