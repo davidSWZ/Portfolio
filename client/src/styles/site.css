@@ -37,7 +37,7 @@ nav{
 }
 
 .navbar-brand{
-  color: #c63737;;
+  color: #c63737 !important;
   transition-duration: 0.5s;
   transition-timing-function: ease;
   transition-delay: 0s;
@@ -52,7 +52,7 @@ nav{
 }
 
 .navbar-brand:hover{
-  color: #c63737;;
+  color: #c63737;
 }
 
 .NavBarBrandScrolling{
@@ -75,8 +75,23 @@ nav{
   font-size: 15px;
 }
 
+.nav-item{
+  max-width: 170px;
+}
+
 .nav-link{
   margin-left: 20px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  color: white !important;
+}
+
+.toggler-btn{
+  border: white 1px solid !important;
+}
+
+.toggler-span{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
 
 .nav-link:hover{
@@ -758,5 +773,9 @@ transition: opacity 300ms, transform 300ms;
 @media screen and (max-width: 500px) {
   .competence-container{
     margin:15px !important;
+  }
+
+  .section-edit-title{
+    font-size: 25px;
   }
 }

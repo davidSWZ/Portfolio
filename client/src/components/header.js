@@ -56,8 +56,8 @@ export default class Header extends Component {
           <div className="container">
             <RouterLink to="/" className='navbar-brand'> <span className="nom">David</span><span className="prenom">SWIATKIEWIEZ</span> </RouterLink>
 
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
+            <button className="navbar-toggler toggler-btn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon toggler-span"></span>
             </button>
 
             <div className='collapse navbar-collapse ancre' id="navbarTogglerDemo02">
@@ -98,7 +98,7 @@ export default class Header extends Component {
                     >PORTFOLIO
                   </Link>
                 </li>
-                <li className='nav-item '>
+                <li className='nav-item'>
                   <Link
                     to='contact'
                     className='nav-link '

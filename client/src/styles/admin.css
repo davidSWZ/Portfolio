@@ -30,7 +30,26 @@
 .input{
   margin: 10px;
   box-shadow: 0 0 10px #b9b9b9;
+}
 
+@media screen and (max-width: 580px) {
+  .adapt-width{
+    width: 100%;
+  }
+  .row{
+    margin:0;
+  }
+  input{
+    width: 90%;
+  }
+  .contain-btn{
+    width: 100%;
+    margin: 0 !important;
+    padding: 5px;
+  }
+  .supp-btn{
+    width: 100%;
+  }
 }
 
 .add-btn{

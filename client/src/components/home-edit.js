@@ -59,9 +59,9 @@ export default class HomeEdit extends Component {
           <h2 className="section-edit-title">HOME</h2>
           <form onSubmit={this.onSubmit} >
 
-            <div className='form-group row'>
+            <div className='form-group row adapt-width'>
               <label htmlFor='input-title' className='col-form-label section-edit-label col-sm-2'> Titre du site </label>
-              <div className='col-sm-9 '>
+              <div className='col-sm-9'>
                 <input  type='text'
                         id='input-title'
                         className='form-control input'

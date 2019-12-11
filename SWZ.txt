@@ -1,11 +1,8 @@
 mettre partie presentation en debut de CV et renommer la partie A propos 
-rendre le tout responsive
-process.env.mailer password
+responsive admin
 Gerer les photo de mes projet portfolio (download bon vers mongo)
-faire les carousel pour chaque portfolio
 Ajouter passport.js
-Ajouter un bouton LogOut et enlever le lien vers la page d’accueil sont le logo de mon nom
-
+Ajouter un bouton LogOut
 
 
 

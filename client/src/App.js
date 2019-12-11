@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import "../node_modules/jquery/dist/jquery.min.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
 import './styles/App.css';
 import './styles/site.css';
 import './styles/admin.css';
@@ -12,7 +13,7 @@ import Header from './components/header';
 
 function App() {
   return (
-  
+
     <Router>
       <Header />
       <Route path='/' exact component={Site} />
