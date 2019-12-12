@@ -12,7 +12,7 @@ export default class Signin extends Component {
       this.state={
         username:"",
         password:"",
-        attemptFailed:false
+        attemptFailed:false,
       }
 
       this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -43,10 +43,8 @@ export default class Signin extends Component {
     axios.post(process.env.REACT_APP_API_URL + 'signin', adminRequest )
       .then(response => {
         if(response.status==200 && response.data) {
-          this.setState({
-            loggedIn: true,
-          });
-          this.props.removeLogIn()
+          this.props.removeLogIn();
+          this.props.handleAdminBtn();
         }
       })
       .catch((err) => {
@@ -55,53 +53,57 @@ export default class Signin extends Component {
   }
 
   render() {
-      return(
-        <div className="signin" >
-          <div className="signInForm">
-              <button type="button" className="close-btn" onClick={this.props.removeLogIn} name="button">x</button>
-              <div className='login-input text-center'>
-                <i className="fas fa-cogs"></i>
-                <h2 className="section-edit-title">Log in</h2>
-                <form>
-                  <div className='col-sm-11 '>
-                    <input  type='text'
-                            id='input-title'
-                            name="username"
-                            className='form-control input'
-                            placeholder='Administrateur'
-                            onChange={(e) => this.handleChangeUsername(e)}
-                            value={this.state.username}
-                            />
-                  </div>
-                  <div className='col-sm-11 '>
-                    <input  type='password'
-                            id='input-title'
-                            name="password"
-                            className='form-control input'
-                            value={this.state.password}
-                            onChange={(e) => this.handleChangePassword(e)}
-                            placeholder='Mot de passe'
-                            />
-                  </div>
+    if(this.props.loggedIn) {
+      return <Redirect to='/admin' />;
+    }
 
-                  <CSSTransition
-                    in={this.state.attemptFailed}
-                    timeout={300}
-                    classNames="login"
-                    unmountOnExit
-                    >
-                      <div className='col-sm-11'>
-                        <p>You are not the administrator ...</p>
-                      </div>
-                    </CSSTransition>
+    return(
+      <div className="signin" >
+        <div className="signInForm">
+            <button type="button" className="close-btn" onClick={this.props.removeLogIn} name="button">x</button>
+            <div className='login-input text-center'>
+              <i className="fas fa-cogs"></i>
+              <h2 className="section-edit-title">Log in</h2>
+              <form>
+                <div className='col-sm-11 '>
+                  <input  type='text'
+                          id='input-title'
+                          name="username"
+                          className='form-control input'
+                          placeholder='Administrateur'
+                          onChange={(e) => this.handleChangeUsername(e)}
+                          value={this.state.username}
+                          />
+                </div>
+                <div className='col-sm-11 '>
+                  <input  type='password'
+                          id='input-title'
+                          name="password"
+                          className='form-control input'
+                          value={this.state.password}
+                          onChange={(e) => this.handleChangePassword(e)}
+                          placeholder='Mot de passe'
+                          />
+                </div>
 
-                  <div className="ok-btn-container">
-                    <input type="submit" onClick={(e) => this.handleSubmit(e)} className='ok-btn' value="OK" />
-                  </div>
-                </form>
-              </div>
-          </div>
+                <CSSTransition
+                  in={this.state.attemptFailed}
+                  timeout={300}
+                  classNames="login"
+                  unmountOnExit
+                  >
+                    <div className='col-sm-11'>
+                      <p>You are not the administrator ...</p>
+                    </div>
+                  </CSSTransition>
+
+                <div className="ok-btn-container">
+                  <input type="submit" onClick={(e) => this.handleSubmit(e)} className='ok-btn' value="OK" />
+                </div>
+              </form>
+            </div>
         </div>
-      )
+      </div>
+    )
   }
 }

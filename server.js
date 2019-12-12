@@ -6,6 +6,7 @@ const express = require('express'),
       passport = require('passport'),
       localStrategy = require('passport-local'),
       User = require('./models/user'),
+      expressSession = require('express-session'),
       formData = require("express-form-data"),
       mongoose = require('mongoose'),
       path = require('path');
@@ -19,18 +20,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-//Configuration de passport
-app.use(require("express-session")({
-  secret:"Hope this will works",
-  resave:false,
-  saveUninitialized:false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
 //Configuration de MongoDB
 mongoose.connect(process.env.MONGODB, {useNewUrlParser:true, useFindAndModify: false })
 const db = mongoose.connection;
@@ -38,6 +27,19 @@ db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function() {
   console.log('the DB is opened');
 })
+
+//Configuration de passport
+app.use(expressSession({
+  secret:"Hope this will works",
+  resave:true,
+  saveUninitialized:true,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //Configuration des routes
 const homeRoute = require('./routes/homeRoute'),

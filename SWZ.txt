@@ -1,9 +1,3 @@
-mettre partie presentation en debut de CV et renommer la partie A propos 
-responsive admin
 Gerer les photo de mes projet portfolio (download bon vers mongo)
-Ajouter passport.js
 Ajouter un bouton LogOut
-
-
-
-
+gérer erreur log

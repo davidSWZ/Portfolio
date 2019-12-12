@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { HashLink as RouterLink } from 'react-router-hash-link';
 import { Link, animateScroll as scroll } from "react-scroll";
 import $ from "jquery";
 import { CSSTransition } from 'react-transition-group';
@@ -12,10 +11,13 @@ export default class Header extends Component {
 
     this.showLogInForm = this.showLogInForm.bind(this);
     this.removeLogInForm = this.removeLogInForm.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.showAdminBtn = this.showAdminBtn.bind(this);
+    this.handleAdminBtn = this.handleAdminBtn.bind(this);
 
     this.state = {
       isTop:true,
-      showLogIn:false
+      showLogIn:false,
     }
   }
 
@@ -27,6 +29,7 @@ export default class Header extends Component {
         this.handleNavBarAspect()
       }
     })
+
   }
 
   handleNavBarAspect() {
@@ -47,14 +50,37 @@ export default class Header extends Component {
     this.setState({showLogIn:false});
   }
 
+  showAdminBtn() {
+    if(!this.props.loggedIn) {
+      return(
+        <div className='navbar-collapse justify-content-end'>
+          <button className='nav-link ancre admin-btn' onClick={this.showLogInForm}><i className="fas fa-user-lock" ></i> ADMIN </button>
+        </div>
+      )
+    } else {
+      return (
+        <div className='navbar-collapse justify-content-end'>
+          <button className='nav-link ancre admin-btn' onClick={this.logOut}><i className="fas fa-user-lock" ></i> DECONNECTION </button>
+        </div>
+      )
+    }
+  }
+
+  handleAdminBtn() {
+    this.props.handleLogIn();
+  }
+
+  logOut() {
+    this.props.handleLogOut();
+  }
+
   render() {
     return (
       <header>
 
-
         <nav className='navbar navbar-expand-lg fixed-top mt-3 navbar-light'>
           <div className="container">
-            <RouterLink to="/" className='navbar-brand'> <span className="nom">David</span><span className="prenom">SWIATKIEWIEZ</span> </RouterLink>
+            <div className='navbar-brand'> <span className="nom">David</span><span className="prenom">SWIATKIEWIEZ</span> </div>
 
             <button className="navbar-toggler toggler-btn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon toggler-span"></span>
@@ -111,12 +137,7 @@ export default class Header extends Component {
                   </Link>
                 </li>
               </ul>
-            </div>
-            <div className='collapse navbar-collapse justify-content-end'>
-              <button className='nav-link ancre admin-btn' onClick={this.showLogInForm}><i className="fas fa-user-lock" ></i> ADMIN </button>
-            </div>
-            <div className='collapse navbar-collapse justify-content-end'>
-              <button className='nav-link ancre admin-btn' onClick={this.showLogInForm}><i className="fas fa-user-lock" ></i> DECONNECTION </button>
+              {this.showAdminBtn()}
             </div>
           </div>
         </nav>
@@ -127,7 +148,11 @@ export default class Header extends Component {
           classNames="login"
           unmountOnExit
           >
-          <Signin removeLogIn={this.removeLogInForm}/>
+          <Signin
+            removeLogIn={this.removeLogInForm}
+            handleAdminBtn={this.handleAdminBtn}
+            loggedIn={this.props.loggedIn}
+          />
         </CSSTransition>
       </header>
     )

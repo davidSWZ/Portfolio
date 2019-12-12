@@ -17,7 +17,6 @@ export default class Portofolio extends Component {
 
     axios.get(process.env.REACT_APP_API_URL + 'portfolio')
       .then(res => {
-        console.log(res.data)
 
         res.data.forEach(function(projet) {
           that.setState({projets: [...that.state.projets,
@@ -30,7 +29,6 @@ export default class Portofolio extends Component {
             }
           ]})
         });
-        console.log(this.state.projets)
       })
       .catch(err => {
         console.log('A problem occured')
