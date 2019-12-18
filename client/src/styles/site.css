@@ -572,7 +572,7 @@ transition: opacity 300ms, transform 300ms;
   width: 25vw;
   height: 30vw;
   margin: 10px;
-  background-image: url(https://www.quickinterim.com/wp-content/uploads/2019/03/freelance-vs-agence-quick-int%C3%A9rim-1024x668.jpg);
+  /* background-image: url(https://www.quickinterim.com/wp-content/uploads/2019/03/freelance-vs-agence-quick-int%C3%A9rim-1024x668.jpg); */
   background-size: cover;
   transition-duration: 0.4s;
   flex-direction: row;

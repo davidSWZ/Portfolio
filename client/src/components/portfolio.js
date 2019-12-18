@@ -43,14 +43,14 @@ export default class Portofolio extends Component {
           <div className="project-display d-flex justify-content-center">
           {
             this.state.projets.map((projet, index) => {
+              var bg = projet.photo;
               return(
                 <AnimateOnScroll>
 
-                <div key={index} className="project-container">
+                <div key={index} className="project-container" style ={ { backgroundImage: "url("+bg+")" } }>
                   <div className="portfolio-content">
                     <p className="projet-title">{projet.title}</p>
                     <p className="projet-description">{projet.description}</p>
-                    <p>{projet.photo}</p>
                     <p className='projet-logo'><i className="fas fa-code"></i></p>
                     <p className='projet-techno'>{projet.techno}</p>
                     <div className='d-flex justify-content-center'>

@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
 });
 
 router.post('/add', function(req, res) {
-  console.log(req.files)
 
   let newprojet = new projet(req.body);
 
