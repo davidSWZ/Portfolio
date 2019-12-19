@@ -1,3 +1,0 @@
-Gerer les photo de mes projet portfolio (download bon vers mongo)
-Enlever db-backup du GitHub
-gérer erreur log

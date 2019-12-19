@@ -6,7 +6,7 @@ import AnimateOnScroll from './animate-on-scroll';
 class Icon extends Component{
   render() {
     return(
-      <AnimateOnScroll>
+      <AnimateOnScroll key={this.props.index}>
       <div key={this.props.index} className="competence-container text-center">
         <div className='icon-circle'>
           <div className='icon'>
@@ -56,7 +56,7 @@ export default class Competence extends Component {
               this.state.competence.map((competence, index) => {
                 var icon =<i className={competence.icon} size='7x'></i>;
                 return(
-                  <Icon icon={icon} index={index} value={competence.value}/>
+                  <Icon icon={icon} index={index} key={index} value={competence.value}/>
                 )
               })
             }

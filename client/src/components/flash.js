@@ -2,14 +2,14 @@ import React from 'react';
 
 function Flash(props){
   const sent = props.sent;
-  if (sent == 'sent') {
+  if (sent === 'sent') {
     return(
       <div>
         {props.text}
         </div>
     )
   }
-  if (sent == 'error') {
+  if (sent === 'error') {
     return(
       <div>
         {props.texterror}

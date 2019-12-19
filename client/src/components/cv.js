@@ -40,7 +40,7 @@ export default class CV extends Component {
           {
             this.state.experience.map((experience, index) => {
               return(
-                <AnimateOnScroll>
+                <AnimateOnScroll key={index}>
                   <div key={index} className="row mt-5">
                     <div className="cv-year col-3">
                       <p>{experience.when}</p>

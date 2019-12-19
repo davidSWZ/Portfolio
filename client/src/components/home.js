@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from "react-scroll";
 import axios from 'axios';
 import '../styles/site.css';
-import logo from '../styles/images/logo-swz.png';
 
 export default class Home extends Component {
 
@@ -22,7 +21,6 @@ export default class Home extends Component {
         home_title:res.data[0].home_title,
         home_description:res.data[0].home_description
       })
-      console.log(res.data)
     })
     .catch(function (err) {
       console.log(err);
@@ -40,10 +38,10 @@ export default class Home extends Component {
           <div className="animation-logo">
             <h1 className="name">David<span className="surname">SWIATKIEWIEZ</span></h1>
             <div className='logo-container'>
-              <a href='https://github.com/davidSWZ' target="_blank">
+              <a href='https://github.com/davidSWZ' target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-github-square logo"></i>
               </a>
-              <a href='https://www.linkedin.com/in/david-swiatkiewiez-7380b876/?originalSubdomain=fr'                target="_blank">
+              <a href='https://www.linkedin.com/in/david-swiatkiewiez-7380b876/?originalSubdomain=fr'                target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin logo"></i>
               </a>
             </div>

@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import { HashLink as RouterLink } from 'react-router-hash-link';
+// import { HashLink as RouterLink } from 'react-router-hash-link';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
@@ -22,15 +22,11 @@ export default class Signin extends Component {
   }
 
   handleChangeUsername(e) {
-    this.state.username = e.target.value;
-
-    this.setState({username: this.state.username});
+    this.setState({username: e.target.value});
   }
 
   handleChangePassword(e) {
-    this.state.password = e.target.value;
-
-    this.setState({password: this.state.password});
+    this.setState({password: e.target.value});
   }
 
   handleSubmit(e) {
@@ -42,7 +38,7 @@ export default class Signin extends Component {
     }
     axios.post(process.env.REACT_APP_API_URL + 'signin', adminRequest )
       .then(response => {
-        if(response.status==200 && response.data) {
+        if(response.status===200 && response.data) {
           this.props.removeLogIn();
           this.props.handleAdminBtn();
         }

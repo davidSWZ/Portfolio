@@ -45,7 +45,7 @@ export default class Portofolio extends Component {
             this.state.projets.map((projet, index) => {
               var bg = projet.photo;
               return(
-                <AnimateOnScroll>
+                <AnimateOnScroll key={index} >
 
                 <div key={index} className="project-container" style ={ { backgroundImage: "url("+bg+")" } }>
                   <div className="portfolio-content">
@@ -55,10 +55,10 @@ export default class Portofolio extends Component {
                     <p className='projet-techno'>{projet.techno}</p>
                     <div className='d-flex justify-content-center'>
                       <div className="projet-lien">
-                        <a href={projet.lienProjet} target="_blank"><i className="far fa-eye"></i> projet</a>
+                        <a href={projet.lienProjet} target="_blank" rel="noopener noreferrer"><i className="far fa-eye"></i> projet</a>
                       </div>
                       <div className="projet-lien">
-                        <a href={projet.lienGithub} target="_blank"><i className="far fa-eye"></i> code</a>
+                        <a href={projet.lienGithub} target="_blank" rel="noopener noreferrer"><i className="far fa-eye"></i> code</a>
                       </div>
                     </div>
                   </div>
