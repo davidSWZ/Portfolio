@@ -19,22 +19,11 @@ app.use(formData.parse());
 app.use(express.static('public'));
 
 app.use(cors());
+app.use(cors({origin: 'https://davidswz.herokuapp.com'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://davidswz.herokuapp.com');
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS, PUT');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', false);
-    // Pass to next layer of middleware
-    next();
-});
+
 
 //Configuration de MongoDB
 mongoose.connect(process.env.MONGODB, {useNewUrlParser:true, useFindAndModify: false })
