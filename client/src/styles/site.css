@@ -133,7 +133,8 @@ nav{
 }
 
 #home{
-  background-image: url("./images/front-background.png");
+  /* background-image: url("./images/front-background.png"); */
+  background-image: url("./images/cv-background.jpg");
   height: 100vh;
 }
 
