@@ -45,7 +45,7 @@ export default class CV extends Component {
                     <div className="cv-year col-3">
                       <p>{experience.when}</p>
                     </div>
-                    <div className="col-9">
+                    <div className="col-9 contain-xp">
                       <p className="cv-title">{experience.title}</p>
                       <p className="cv-lieu">{experience.where}</p>
                       <p>{experience.description}</p>

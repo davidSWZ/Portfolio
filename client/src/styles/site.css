@@ -766,6 +766,10 @@ transition: opacity 300ms, transform 300ms;
   .section-title{
     font-size: 40px;
   }
+
+  .contain-xp{
+    flex: 0 0 70% !important;
+  }
 }
 
 @media screen and (max-width: 500px) {
