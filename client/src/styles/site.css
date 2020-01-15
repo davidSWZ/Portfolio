@@ -768,7 +768,7 @@ transition: opacity 300ms, transform 300ms;
   }
 
   .contain-xp{
-    flex: 0 0 70% !important;
+    flex: 0 0 50% !important;
   }
 }
 
