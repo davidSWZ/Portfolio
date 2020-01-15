@@ -124,7 +124,7 @@ nav{
 #home, #cv{
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   color: white;
 }
 
@@ -134,11 +134,10 @@ nav{
 
 #home{
   background-image: url("./images/front-background.png");
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 #cv{
-  /* background: #c63737; */
   background-image: url("./images/cv-background.jpg");
 }
 
