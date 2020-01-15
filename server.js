@@ -19,7 +19,7 @@ app.use(formData.parse());
 app.use(express.static('public'));
 
 app.use(cors());
-app.use(cors({origin: 'https://davidswz.herokuapp.com'}));
+app.use(cors({origin: '*'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
