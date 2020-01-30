@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import './styles/App.css';
 import './styles/site.css';
 import './styles/admin.css';
-import './styles/fontawesome/css/all.css';
+import './styles/fontawesome/css/all.min.css';
 import Site from './components/site';
 import Admin from './components/admin';
 import Header from './components/header';
