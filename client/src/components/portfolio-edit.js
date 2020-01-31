@@ -11,12 +11,6 @@ export default class PortfolioEdit extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.addProject = this.addProject.bind(this);
-    this.onChangeProjetTitle = this.onChangeProjetTitle.bind(this);
-    this.onChangeProjetDescription = this.onChangeProjetDescription.bind(this);
-    this.onChangeProjetPhoto = this.onChangeProjetPhoto.bind(this);
-    this.onChangeProjetTechno = this.onChangeProjetTechno.bind(this);
-    this.onChangeProjetLien = this.onChangeProjetLien.bind(this);
-    this.onChangeGitHubLien = this.onChangeGitHubLien.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
 
     this.state={
@@ -36,7 +30,7 @@ export default class PortfolioEdit extends Component {
               photo:projet.photo,
               techno:projet.techno,
               lienProjet:projet.lienProjet,
-              lienGithub:projet.lienGithub,
+              lienGitHub:projet.lienGitHub,
               id:projet._id,
               modified:false
             }
@@ -62,60 +56,33 @@ export default class PortfolioEdit extends Component {
       }]})
   }
 
-  onChangeProjetTitle(e, index) {
-    this.state.projets[index].title= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
-  }
-
-  onChangeProjetDescription(e, index) {
-    this.state.projets[index].description= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
-  }
-
-  onChangeProjetPhoto(e, index) {
-    this.state.projets[index].photo= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
-  }
-
-  onChangeProjetTechno(e, index) {
-    this.state.projets[index].techno= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
-  }
-
-  onChangeProjetLien(e, index) {
-    this.state.projets[index].lienProjet= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
-  }
-
-  onChangeGitHubLien(e, index) {
-    this.state.projets[index].lienGitHub= e.target.value;
-    this.state.projets[index].modified = true;
-    this.setState({projets:this.state.projets});
+  onChange(e, index) {
+    const eTargetName = e.target.name;
+    const newProjetArray = this.state.projets.slice();
+    newProjetArray[index][eTargetName] = e.target.value;
+    newProjetArray[index].modified = true;
+    this.setState({projets: newProjetArray});
   }
 
   handleRemove(e, index) {
+    const newProjetArray = this.state.projets.slice();
     axios.delete(process.env.REACT_APP_API_URL + 'portfolio/delete', {data:{id:this.state.projets[index].id}})
     .then(
-      this.state.projets.splice(index, 1)
+      newProjetArray.splice(index, 1)
     )
     .then(
-      this.setState({ projets : this.state.projets})
+      this.setState({projets: newProjetArray})
     )
   }
 
   onSubmit(e, index) {
     e.preventDefault();
-
     let projet = this.state.projets[index];
+    const newProjetArray = this.state.projets.slice();
     axios.post(process.env.REACT_APP_API_URL + 'portfolio/add', projet)
     .then(res => {
-      this.state.projets[index].modified = false;
-      this.setState({projets: this.state.projets});
+      newProjetArray[index].modified = false;
+      this.setState({projets: newProjetArray});
     })
     .catch(function(err) {
       console.log(err);
@@ -133,40 +100,46 @@ export default class PortfolioEdit extends Component {
                 <div key={index} className='mb-2 form-group row'>
                           <label htmlFor='projetTitle' className='col-form-label section-edit-label col-sm-2'>Titre</label>
                           <input  value={projet.title}
+                                  name="title"
                                   id='projetTitle'
                                   className='form-control col-sm-9 input'
-                                  onChange={(e) => {this.onChangeProjetTitle(e, index)}}
+                                  onChange={(e) => {this.onChange(e, index)}}
                                   />
                           <label htmlFor='projetdesc' className='col-form-label section-edit-label col-sm-2'>Description</label>
                           <textarea value={projet.description}
+                                    name="description"
                                     id='projetdesc'
                                     className='form-control col-sm-9 input'
-                                    onChange={(e) => {this.onChangeProjetDescription(e, index)}}
+                                    onChange={(e) => {this.onChange(e, index)}}
                                     >
                           </textarea>
                           <label htmlFor='techno' className='col-form-label section-edit-label col-sm-2'>Technologies</label>
                           <input  value={projet.techno}
+                                  name="techno"
                                   id='techno'
                                   className='form-control col-sm-9 input'
-                                  onChange={(e) => {this.onChangeProjetTechno(e, index)}}
+                                  onChange={(e) => {this.onChange(e, index)}}
                                   />
                           <label htmlFor='lienProjet' className='col-form-label section-edit-label col-sm-2'>Lien vers projet</label>
                           <input  value={projet.lienProjet}
+                                  name="lienProjet"
                                   id='lienProjet'
                                   className='form-control col-sm-9 input'
-                                  onChange={(e) => {this.onChangeProjetLien(e, index)}}
+                                  onChange={(e) => {this.onChange(e, index)}}
                                   />
                           <label htmlFor='lienGitHub' className='col-form-label section-edit-label col-sm-2'>Lien vers code</label>
                           <input  value={projet.lienGitHub}
+                                  name="lienGitHub"
                                   id='lienGitHub'
                                   className='form-control col-sm-9 input'
-                                  onChange={(e) => {this.onChangeGitHubLien(e, index)}}
+                                  onChange={(e) => {this.onChange(e, index)}}
                                   />
                           <label htmlFor='projetPhoto' className='col-form-label section-edit-label col-sm-2'>Photo</label>
                           <input  value={projet.photo}
+                                  name="photo"
                                   id='projetPhoto'
                                   className='form-control col-sm-9 input'
-                                  onChange={(e) => {this.onChangeProjetPhoto(e, index)}}
+                                  onChange={(e) => {this.onChange(e, index)}}
                                   />
                   <div className="contain-btn">
                     <SaveBtn modified={projet.modified} onSubmit={(e) => this.onSubmit(e, index)}/>

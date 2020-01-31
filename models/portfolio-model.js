@@ -17,7 +17,7 @@ let projet = new Schema ({
   lienProjet: {
     type: String
   },
-  lienGitHub :{
+  lienGitHub: {
     type: String
   }
 });

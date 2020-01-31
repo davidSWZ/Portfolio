@@ -9,14 +9,6 @@ export default class CVEdit extends Component {
   constructor(props) {
     super(props);
 
-    this.onSubmit = this.onSubmit.bind(this);
-    this.addExperience = this.addExperience.bind(this);
-    this.onChangeExperienceTitle = this.onChangeExperienceTitle.bind(this);
-    this.onChangeExperienceWhere = this.onChangeExperienceWhere.bind(this);
-    this.onChangeExperienceWhen = this.onChangeExperienceWhen.bind(this);
-    this.onChangeExperienceDescription = this.onChangeExperienceDescription.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-
     this.state={
       experience : []
     }
@@ -56,50 +48,33 @@ export default class CVEdit extends Component {
       }]})
   }
 
-  onChangeExperienceTitle(e, index) {
-    this.state.experience[index].title = e.target.value;
-    this.state.experience[index].modified = true;
-    this.setState({experience:this.state.experience});
-  }
-
-  onChangeExperienceWhere(e, index) {
-    this.state.experience[index].where = e.target.value;
-    this.state.experience[index].modified = true;
-    this.setState({experience:this.state.experience});
-  }
-
-  onChangeExperienceWhen(e, index) {
-    this.state.experience[index].when = e.target.value;
-    this.state.experience[index].modified = true;
-    this.setState({experience:this.state.experience});
-  }
-
-  onChangeExperienceDescription(e, index) {
-    this.state.experience[index].description = e.target.value;
-    this.state.experience[index].modified = true;
-    this.setState({experience:this.state.experience});
+  onChange(e, index) {
+    const eTargetName = e.target.name;
+    const newExpArray = this.state.experience.slice();
+    newExpArray[index][eTargetName] = e.target.value;
+    newExpArray[index].modified = true;
+    this.setState({experience: newExpArray});
   }
 
   handleRemove(e, index) {
+    const newExpArray = this.state.experience.slice();
     axios.delete(process.env.REACT_APP_API_URL + 'experience/delete', {data:{id:this.state.experience[index].id}})
     .then(
-      this.state.experience.splice(index, 1)
+       newExpArray.splice(index, 1)
     )
     .then(
-      this.setState({ experience : this.state.experience})
+      this.setState({experience: newExpArray})
     )
   }
 
-
-
   onSubmit(e, index) {
     e.preventDefault();
-    let experience = this.state.experience[index];
-
+    const experience = this.state.experience[index];
+    const newExpArray = this.state.experience.slice();
     axios.post(process.env.REACT_APP_API_URL + 'experience/add', experience)
     .then(res => {
-      this.state.experience[index].modified = false;
-      this.setState({experience: this.state.experience});
+      newExpArray[index].modified = false;
+      this.setState({experience: newExpArray});
     })
     .catch(function(err) {
       console.log(err);
@@ -121,7 +96,8 @@ export default class CVEdit extends Component {
                               id='newTitle'
                               className='form-control col-sm-9 input'
                               value={exp.title}
-                              onChange={(e) => {this.onChangeExperienceTitle(e, index)}}
+                              name="title"
+                              onChange={(e) => {this.onChange(e, index)}}
                               />
                       <label htmlFor='newWhere' className='col-form-label section-edit-label col-sm-2'>Oú</label>
 
@@ -129,7 +105,8 @@ export default class CVEdit extends Component {
                               id='newWhere'
                               className='form-control col-sm-9 input'
                               value={exp.where}
-                              onChange={(e) => {this.onChangeExperienceWhere(e, index)}}
+                              name="where"
+                              onChange={(e) => {this.onChange(e, index)}}
                               />
                       <label htmlFor='newWhen' className='col-form-label section-edit-label col-sm-2'>Quand</label>
 
@@ -137,14 +114,16 @@ export default class CVEdit extends Component {
                               id='newWhen'
                               className='form-control col-sm-9 input'
                               value={exp.when}
-                              onChange={(e) => {this.onChangeExperienceWhen(e, index)}}
+                              name="when"
+                              onChange={(e) => {this.onChange(e, index)}}
                               />
                       <label htmlFor='newDescription' className='col-form-label section-edit-label col-sm-2'>Description</label>
                       <textarea type='text'
                                 id='newDescription'
                                 className='form-control col-sm-9 input'
                                 value={exp.description}
-                                onChange={(e) => {this.onChangeExperienceDescription(e, index)}}
+                                name= "description"
+                                onChange={(e) => {this.onChange(e, index)}}
                               >
                       </textarea>
 

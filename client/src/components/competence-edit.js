@@ -9,12 +9,6 @@ export default class CompetenceEdit extends Component {
   constructor(props) {
     super(props);
 
-    this.addCompetence = this.addCompetence.bind(this);
-    this.onChangeCompetenceValue = this.onChangeCompetenceValue.bind(this);
-    this.onChangeCompetenceIcon = this.onChangeCompetenceIcon.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
     this.state={
       competence:[],
     }
@@ -41,35 +35,39 @@ export default class CompetenceEdit extends Component {
   }
 
   onChangeCompetenceValue(e, index) {
-    this.state.competence[index].value = e.target.value;
-    this.state.competence[index].modified = true;
-    this.setState({competence: this.state.competence})
+    const newCompetenceArray = this.state.competence.slice();
+    newCompetenceArray[index].value = e.target.value;
+    newCompetenceArray[index].modified = true;
+    this.setState({competence: newCompetenceArray});
   }
 
   onChangeCompetenceIcon(e, index) {
-    this.state.competence[index].icon = e.target.value;
-    this.state.competence[index].modified = true;
-
-    this.setState({competence: this.state.competence})
+    const newCompetenceArray = this.state.competence.slice();
+    newCompetenceArray[index].icon = e.target.value;
+    newCompetenceArray[index].modified = true;
+    this.setState({competence: newCompetenceArray});
   }
 
   handleRemove(e, index) {
+    const newCompetenceArray = this.state.competence.slice();
     axios.delete(process.env.REACT_APP_API_URL + 'competence/delete', {data:{Value:this.state.competence[index].value}})
     .then(
-      this.state.competence.splice(index, 1)
+      newCompetenceArray.splice(index, 1)
     )
     .then(
-      this.setState({ competence : this.state.competence})
+      this.setState({competence: newCompetenceArray})
     )
   }
 
   onSubmit(e, index) {
     e.preventDefault();
     let competence = this.state.competence[index];
+    const newCompetenceArray = this.state.competence.slice();
+
     axios.post(process.env.REACT_APP_API_URL + 'competence/add', competence)
     .then(res => {
-        this.state.competence[index].modified = false;
-        this.setState({competence: this.state.competence});
+        newCompetenceArray[index].modified = false;
+        this.setState({competence: newCompetenceArray});
     })
     .catch(function(err) {
       console.log(err);
