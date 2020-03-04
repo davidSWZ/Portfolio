@@ -28,7 +28,7 @@ export default class CompetenceEdit extends Component {
       });
   }
 
-  addCompetence() {
+  addCompetence = () => {
     this.setState({
       competence: [...this.state.competence, {value:'', icon:this.state.icon, modified:false}],
     });

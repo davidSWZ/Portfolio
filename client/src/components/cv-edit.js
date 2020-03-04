@@ -36,7 +36,7 @@ export default class CVEdit extends Component {
   }
 
 
-  addExperience() {
+  addExperience = () => {
     this.setState(
       {experience: [...this.state.experience, {
         title:'',
