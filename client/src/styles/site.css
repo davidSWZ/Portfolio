@@ -461,6 +461,14 @@ margin-top: 45px;
   transition-duration: .4s;
 }
 
+.download-btn-text1{
+  margin-left: -15px;
+}
+
+.download-btn-text2{
+  margin-left: -10px;
+}
+
 .download-btn a{
   color: #c63737;
 }

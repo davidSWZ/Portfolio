@@ -55,10 +55,15 @@ export default class CV extends Component {
               )
             })
           }
-          <p className='mt-5'> Télécharger le CV </p>
-          <div className='d-flex justify-content-center pb-5'>
+          <p className='mt-5 font-weight-bold'> Télécharger le CV </p>
+          <div className='d-flex justify-content-around pb-5'>
               <div className='download-btn'>
                 <a href="CV_d.swiatkiewiez.pdf" download> <i className="fas fa-download"></i> </a>
+                <p className='mt-4 download-btn-text1'>Français</p>
+              </div>
+              <div className='download-btn'>
+                <a href="CV_david_swiatkiewiez_english.pdf" download> <i className="fas fa-download"></i> </a>
+                <p className='mt-4 download-btn-text2'>English</p>
               </div>
           </div>
         </div>
