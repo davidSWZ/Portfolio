@@ -25,10 +25,12 @@ export default class App extends Component {
 
   }
 
+  //Deconnexion de l'espace administrateur
   handleLogOut() {
     this.setState({loggedIn : false})
   }
 
+  //Connexion à l'espace administrateur
   handleLogIn() {
     this.setState({loggedIn : true})
   }

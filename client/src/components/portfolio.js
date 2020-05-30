@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import AnimateOnScroll from './animate-on-scroll';
 
+//Génère la partie portfolio de la frontpage
 export default class Portofolio extends Component {
 
   constructor(props) {
@@ -12,6 +13,7 @@ export default class Portofolio extends Component {
     }
   }
 
+  //Récupère les projets depuis la BD
   componentDidMount() {
     let that = this;
 

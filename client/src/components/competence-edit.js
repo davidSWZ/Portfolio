@@ -4,6 +4,7 @@ import SaveBtn from './saveBtn';
 import SuppBtn from './suppBtn';
 import AddBtn from './addBtn';
 
+//Section d'édition pour les compétences affichées sur la frontpage
 export default class CompetenceEdit extends Component {
 
   constructor(props) {
@@ -13,7 +14,7 @@ export default class CompetenceEdit extends Component {
       competence:[],
     }
   }
-
+  //Récupère les compétences depuis le serveur
   componentDidMount() {
     let that = this;
 
@@ -28,12 +29,14 @@ export default class CompetenceEdit extends Component {
       });
   }
 
+  //Ajoute une nouvelle compétence dans les states
   addCompetence = () => {
     this.setState({
       competence: [...this.state.competence, {value:'', icon:this.state.icon, modified:false}],
     });
   }
 
+  //Modifie la valeur de la compétence dans les states
   onChangeCompetenceValue(e, index) {
     const newCompetenceArray = this.state.competence.slice();
     newCompetenceArray[index].value = e.target.value;
@@ -41,6 +44,7 @@ export default class CompetenceEdit extends Component {
     this.setState({competence: newCompetenceArray});
   }
 
+  //Modifie l'icone de la compétence dans les states
   onChangeCompetenceIcon(e, index) {
     const newCompetenceArray = this.state.competence.slice();
     newCompetenceArray[index].icon = e.target.value;
@@ -48,6 +52,7 @@ export default class CompetenceEdit extends Component {
     this.setState({competence: newCompetenceArray});
   }
 
+  //Supprime la compétence de la BD et des states
   handleRemove(e, index) {
     const newCompetenceArray = this.state.competence.slice();
     axios.delete(process.env.REACT_APP_API_URL + 'competence/delete', {data:{Value:this.state.competence[index].value}})
@@ -59,6 +64,7 @@ export default class CompetenceEdit extends Component {
     )
   }
 
+  //Ajoute la compétence à la BD
   onSubmit(e, index) {
     e.preventDefault();
     let competence = this.state.competence[index];

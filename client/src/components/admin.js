@@ -6,6 +6,8 @@ import CVEdit from './cv-edit';
 import PortfolioEdit from './portfolio-edit';
 import FooterAdmin from './footer-admin';
 
+//Si la personne à bien les identifiants administrateur, afficher espace admin
+//Sinon renvoi à la frontpage
 export default class Admin extends Component {
   render () {
     if(!this.props.loggedIn) {

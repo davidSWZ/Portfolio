@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import AnimateOnScroll from './animate-on-scroll';
 
-
+//Génère l'icone représentant une compétence sur la frontpage
 class Icon extends Component{
   render() {
     return(
@@ -20,6 +20,7 @@ class Icon extends Component{
   }
 }
 
+//Génère la partie compétence de la frontpage
 export default class Competence extends Component {
 
   constructor(props) {
@@ -29,6 +30,7 @@ export default class Competence extends Component {
     }
   }
 
+  //Récupère les compétences depuis la BD
   componentDidMount() {
     let that = this;
 

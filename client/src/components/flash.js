@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Composant pour afficher un message flash
 function Flash(props){
   const sent = props.sent;
   if (sent === 'sent') {

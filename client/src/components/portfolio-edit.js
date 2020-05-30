@@ -4,6 +4,7 @@ import SaveBtn from './saveBtn';
 import SuppBtn from './suppBtn';
 import AddBtn from './addBtn';
 
+//Section d'édition pour le portfolio de la frontpage
 export default class PortfolioEdit extends Component {
 
   constructor(props) {
@@ -18,6 +19,7 @@ export default class PortfolioEdit extends Component {
     }
   }
 
+  // Récupère les infos de projets depuis la BD
   componentDidMount() {
     let that = this;
 
@@ -42,6 +44,7 @@ export default class PortfolioEdit extends Component {
       });
   }
 
+  //Ajoute un projet au state
   addProject() {
     this.setState({projets:[...this.state.projets,
       {
@@ -56,6 +59,7 @@ export default class PortfolioEdit extends Component {
       }]})
   }
 
+  // modifie le state en fonction de l'input
   onChange(e, index) {
     const eTargetName = e.target.name;
     const newProjetArray = this.state.projets.slice();
@@ -64,6 +68,7 @@ export default class PortfolioEdit extends Component {
     this.setState({projets: newProjetArray});
   }
 
+  // supprime un projet (BD et state)
   handleRemove(e, index) {
     const newProjetArray = this.state.projets.slice();
     axios.delete(process.env.REACT_APP_API_URL + 'portfolio/delete', {data:{id:this.state.projets[index].id}})
@@ -75,6 +80,7 @@ export default class PortfolioEdit extends Component {
     )
   }
 
+  //Enrigistre un nouveau projet dans la BD
   onSubmit(e, index) {
     e.preventDefault();
     let projet = this.state.projets[index];

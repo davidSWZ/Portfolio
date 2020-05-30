@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+//Section d'édition pour l'accueil de la frontpage
 export default class HomeEdit extends Component {
 
   constructor(props) {
@@ -15,6 +16,7 @@ export default class HomeEdit extends Component {
     }
   }
 
+  // Récupère les infos depuis la BD
   componentDidMount(){
     axios.get(process.env.REACT_APP_API_URL + 'home')
       .then(res => {
@@ -28,12 +30,14 @@ export default class HomeEdit extends Component {
       })
   }
 
+  // modifie state selon input
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
+  // modifie le texte de la frontpage dans la BD
   onSubmit(e){
     e.preventDefault();
 

@@ -2,6 +2,7 @@ const express = require('express'),
       router = express.Router();
       competences = require('../models/competence-model');
 
+//Récupére les compétences
 router.get('/', function(req, res) {
   competences.find(function(err, competence) {
     if(err) {
@@ -12,6 +13,7 @@ router.get('/', function(req, res) {
   })
 });
 
+//Ajoute une compétence
 router.post('/add', function(req, res) {
   let newCompetence = new competences(req.body);
   if(req.body.id && req.body.id !== null){
@@ -37,6 +39,7 @@ router.post('/add', function(req, res) {
   )
 });
 
+//Supprime une compétence
 router.delete('/delete', function(req, res) {
   competences.deleteOne({value:req.body.Value}, function(err) {
     if(!err) {

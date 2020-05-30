@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 
+// Formulaire pour accéder à la partie administrateur
 export default class Signin extends Component {
 
   constructor(props) {
@@ -21,10 +22,12 @@ export default class Signin extends Component {
 
   }
 
+  // /modifie le state utilisateur en fonction de l'input
   handleChangeUsername(e) {
     this.setState({username: e.target.value});
   }
 
+  // /modifie le state password en fonction de l'input
   handleChangePassword(e) {
     this.setState({password: e.target.value});
   }

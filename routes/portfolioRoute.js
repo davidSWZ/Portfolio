@@ -2,6 +2,7 @@ const express = require('express'),
       router = express.Router(),
       projet = require('../models/portfolio-model');
 
+//Renvoi les projets du portfolio
 router.get('/', function(req, res) {
   projet.find(function(err, projet) {
     if(err) {
@@ -12,6 +13,7 @@ router.get('/', function(req, res) {
   })
 });
 
+//Ajoute un projet au portfolio
 router.post('/add', function(req, res) {
 
   let newprojet = new projet(req.body);
@@ -39,6 +41,7 @@ router.post('/add', function(req, res) {
   )
 });
 
+//supprime un projet du portfolio
 router.delete('/delete', function(req, res) {
   projet.deleteOne({_id:req.body.id}, function(err) {
     if(!err) {

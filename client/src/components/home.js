@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import axios from 'axios';
 import '../styles/site.css';
 
+// Génère la partie d'accueuil de la frontpage
 export default class Home extends Component {
 
   constructor(props) {
@@ -14,6 +15,7 @@ export default class Home extends Component {
     }
   }
 
+  // Récupère les information de la section depuis la BD
   componentDidMount() {
     axios.get(process.env.REACT_APP_API_URL + 'home')
     .then(res => {

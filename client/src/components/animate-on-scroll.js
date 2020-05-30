@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ScrollTrigger from 'react-scroll-trigger';
 
+//Composant permettant d'animer un autre composant en fonction du scroll
 export default class animateOnScroll extends Component {
 
   constructor(props) {

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Flash from './flash';
 import AnimateOnScroll from './animate-on-scroll';
 
+//Génère la partie Contact de la frontpage
 export default class Contact extends Component {
   constructor(props) {
       super(props);
@@ -18,14 +19,17 @@ export default class Contact extends Component {
       }
   }
 
+  //Vérifie si le mail est envoyé depuis le formulaire de contact
   componentDidMount() {
     this.setState({...this.state, sent:false})
   }
 
+  //Modifie le state lors de la modification de l'input
   onChange(e) {
     this.setState({...this.state, [e.target.name]: e.target.value, sent:''});
   }
 
+  //Envoi la requête à nodemailer pour générer l'email qui envoyé à l'admin
   onSubmit(e) {
     e.preventDefault();
 
@@ -54,6 +58,8 @@ export default class Contact extends Component {
 
   render() {
     return (
+
+      //Présentation de mes données de contact
       <footer id='contact' className='section text-center'>
         <h2 className="section-title"> Contactez moi </h2>
 
@@ -71,6 +77,7 @@ export default class Contact extends Component {
           </div>
         </div>
 
+        {/* Formulaire pour envoyer un mail */}
         <AnimateOnScroll>
           <form className='mt-2 container'>
           <div className='d-flex justify-content-center'>

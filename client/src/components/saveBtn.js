@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Bouton enregistrer de la partie administrateur
 function SaveBtn(props){
   const modified = props.modified;
   if (modified) {

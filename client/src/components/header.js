@@ -4,6 +4,7 @@ import $ from "jquery";
 import { CSSTransition } from 'react-transition-group';
 import Signin from './signin';
 
+// Partie d'accueil de la frontpage
 export default class Header extends Component {
 
   constructor(props) {
@@ -21,6 +22,7 @@ export default class Header extends Component {
     }
   }
 
+  // Check la position du scroll pour en déduire l'état de la navbar
   componentDidMount() {
     document.addEventListener('scroll', () => {
       const isTop= window.scrollY < 10;
@@ -32,6 +34,7 @@ export default class Header extends Component {
 
   }
 
+  // Gére l'aspect de la navbar
   handleNavBarAspect() {
     if(this.state.isTop) {
       $(".navbar").removeClass("NavBarScrolling");
@@ -42,14 +45,17 @@ export default class Header extends Component {
     }
   }
 
+  // Affiche le modal pour accéder à l'espace administrateur
   showLogInForm() {
     this.setState({showLogIn:true});
   }
 
+  //Masque le modal pour accéder à l'espace administrateur
   removeLogInForm() {
     this.setState({showLogIn:false});
   }
 
+  // Affiche le bouton connexion ou déconnexion en fonction de si l'utilisateur est connecté ou pas
   showAdminBtn() {
     if(!this.props.loggedIn) {
       return(
@@ -66,10 +72,12 @@ export default class Header extends Component {
     }
   }
 
+  //Revoi à la formation login du parent
   handleAdminBtn() {
     this.props.handleLogIn();
   }
 
+  //Revoi à la formation logout du parent
   logOut() {
     this.props.handleLogOut();
   }
@@ -80,12 +88,16 @@ export default class Header extends Component {
 
         <nav className='navbar navbar-expand-lg fixed-top mt-3 navbar-light'>
           <div className="container">
+
+            {/* Affiche mon nom */}
             <div className='navbar-brand'> <span className="nom">David</span><span className="prenom">SWIATKIEWIEZ</span> </div>
 
+            {/* Affiche le titre de mon poste */}
             <button className="navbar-toggler toggler-btn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon toggler-span"></span>
             </button>
 
+            {/* Navbar */}
             <div className='collapse navbar-collapse ancre' id="navbarTogglerDemo02">
               <ul className='navbar-nav'>
                 <li className='nav-item'>
@@ -142,12 +154,14 @@ export default class Header extends Component {
           </div>
         </nav>
 
+        {/* Gère l'effet de transition du signin formulaire */}
         <CSSTransition
           in={this.state.showLogIn}
           timeout={300}
           classNames="login"
           unmountOnExit
           >
+          {/* Formulaire signin */}
           <Signin
             removeLogIn={this.removeLogInForm}
             handleAdminBtn={this.handleAdminBtn}

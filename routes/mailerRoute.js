@@ -2,7 +2,10 @@ const express = require('express'),
       router = express.Router(),
       nodeMailer = require('nodemailer');
 
+//m'envoi un email
 router.post('/', function(req, res) {
+
+  //Connection à gmail
   let transporter = nodeMailer.createTransport({
     service: 'gmail',
     auth: {
@@ -11,15 +14,16 @@ router.post('/', function(req, res) {
     }
   });
 
-  // setup email data with unicode symbols
+  // configuration de l'email
   const sender = req.body.name+' '+req.body.surname;
   let mailOptions = {
-      from: req.body.mail, // sender address
-      to: 'david.swiatkiewiez@gmail.com', // list of receivers
-      subject: 'Nouveau message envoyé depuis mon portfolio par '+ sender, // Subject line
+      from: req.body.mail, 
+      to: 'david.swiatkiewiez@gmail.com',
+      subject: 'Nouveau message envoyé depuis mon portfolio par '+ sender,
       text: req.body.message +'\n'+'\n'+'Adresse mail de '+sender+': '+ req.body.mail,
   };
 
+  //envoi de l'email
   transporter.sendMail(mailOptions, function (err, info) {
    if(err)
      console.log(err)

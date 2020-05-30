@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// Footer de la partie administrateur
 export default class FooterAdmin extends Component {
   render() {
     return (

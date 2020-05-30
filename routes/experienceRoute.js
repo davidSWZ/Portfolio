@@ -2,6 +2,7 @@ const express = require('express'),
       router = express.Router(),
       experience = require('../models/experience-model');
 
+//Récupère les expériences du CV
 router.get('/', function(req, res) {
   experience.find(function(err, experience) {
     if(err) {
@@ -12,6 +13,7 @@ router.get('/', function(req, res) {
   })
 });
 
+//Ajoute une expérience au CV
 router.post('/add', function(req, res) {
   let newExperience = new experience(req.body);
   if(req.body.id && req.body.id !== null){
@@ -37,6 +39,7 @@ router.post('/add', function(req, res) {
   )
 });
 
+//Supprime un expérience du CV
 router.delete('/delete', function(req, res) {
   experience.deleteOne({_id:req.body.id}, function(err) {
     if(!err) {

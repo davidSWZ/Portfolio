@@ -2,6 +2,7 @@ const express = require('express'),
       router = express.Router(),
       home = require('../models/home-model');
 
+//Récupère les informations du titre du site
 router.get('/', function(req, res) {
   home.find(function(err, foundHome) {
     if(err) {
@@ -12,6 +13,7 @@ router.get('/', function(req, res) {
   })
 });
 
+//Modifie le titre du site
 router.post('/update/:id', function(req, res) {
   let newTitle = req.body.home_title,
       newDescription = req.body.home_description;

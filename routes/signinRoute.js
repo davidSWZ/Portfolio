@@ -4,6 +4,7 @@ const express = require('express'),
 
 var username;
 
+//Vérification pour connection à l'espace administrateur
 router.post("/",passport.authenticate("local"), (req, res) => {
   if(req.isAuthenticated()) {
     username = req.user.username;
